@@ -4,11 +4,11 @@ f_x <- function(x){
   3 * x + 2
 }
 curve(f_x, -2.5, 2.5, 
-     col = "red", 
-     type = "l", 
-     lwd = 2, 
-     main = "Linear function", 
-     xlab = "x-values", ylab = "y-values", cex.lab = 0.75)
+      col = "red", 
+      type = "l", 
+      lwd = 2, 
+      main = "Linear function", 
+      xlab = "x-values", ylab = "y-values", cex.lab = 0.75)
 abline(h = 0, v = 0, lty = 5, col = "black")
 grid()
 
@@ -17,12 +17,12 @@ f_x <- function(x){
   4 * x ^ 2 + 3 * x + 2
 }
 curve(f_x, -2.5, 2.5,
-     col = "red", 
-     type = "l", 
-     lwd = 2, 
-     main = "Quadratic function", 
-     xlab = "x-values", ylab = "y-values", cex.lab = 0.75,
-     ylim = c(0, 35))
+      col = "red", 
+      type = "l", 
+      lwd = 2, 
+      main = "Quadratic function", 
+      xlab = "x-values", ylab = "y-values", cex.lab = 0.75,
+      ylim = c(0, 35))
 abline(h = 0, v = 0, lty = 5, col = "black")
 grid()
 
@@ -49,7 +49,7 @@ plot(x, conv.exp(x), type = "p", col = "red",
      xlab = "x", ylab = "f(x) = exp(x)",
      ylim = c(0, 3),
      cex.lab = 0.75
-     )
+)
 abline(h = exp(1), col = "blue", lwd = 2)
 grid()
 
@@ -92,9 +92,9 @@ deriv <- function(x){
 }
 #plotting procedures
 curve(initF, 0, 5,
-       main = "Roots of quadratic function", xlab = "x", ylab = "y",
-       col = "red", lwd = 2,
-       cex.lab = 0.75)
+      main = "Roots of quadratic function", xlab = "x", ylab = "y",
+      col = "red", lwd = 2,
+      cex.lab = 0.75)
 curve(deriv, add = TRUE, col = "green", lty = 2)
 abline(h = 0, col = "grey", lty = 4)
 #calculate the roots of the derivate (stationary points)
