@@ -1,10 +1,10 @@
-f_quad <- function(x, a, b, c){
+f_x <- function(x, a, b, c){
   a * x ^ 2 + b * x + c
 }
 
 #define the domain and parameters of the quadratic function
 x <- seq(-2.5, 2.5, len = 300); a <- 4; b <- 3; c <- 2 
-y <- f_quad(x, a, b, c)
+y <- f_x(x, a, b, c)
 plot(x, y, 
      col = "red", 
      type = "l", 
