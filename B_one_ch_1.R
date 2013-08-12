@@ -79,7 +79,7 @@ curve(f_1, 0.1, 5, col = "blue",
 curve(f_2, 0.1, 5, col = "red", add = TRUE)
 abline(h = 0, v = 0, lty = 5, col = "grey")
 grid()
-legend(names = c("Function(a)","Function(b)"))
+legend(names = c("Function(a)","Function(b)")) #please correct the legen procedure
 
 #Sec.I.1.3.4 - Stationary points
 #define the initial funtion
