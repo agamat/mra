@@ -79,7 +79,8 @@ curve(f_1, 0.1, 5, col = "blue",
 curve(f_2, 0.1, 5, col = "red", add = TRUE)
 abline(h = 0, v = 0, lty = 5, col = "grey")
 grid()
-legend(names = c("Function(a)","Function(b)")) #please correct the legen procedure
+leg.txt <- c("f_1", "f_2")
+legend(0, 7.5, leg.txt, lty = 1, col = c("blue","red"))
 
 #Sec.I.1.3.4 - Stationary points
 #define the initial funtion
