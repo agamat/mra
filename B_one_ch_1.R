@@ -155,6 +155,8 @@ ast1 <- c(100, 125, 80, 120)
 ast2 <- c(200, 500, 250, 400)
 ass.tbl <- data.frame(years = years, asset1 = ast1, asset2 = ast2)
 init.hold <- c(600, 200) #initial unit holdings of asset 1 and asset 2
-for (i in 1:4)
-  print ass.tbl[i,2:3] * init.hold
+port.val <- matrix(0, nrow = dim(ass.tbl)[1], ncol = 1)
+for (i in 1:dim(ass.tbl)[1])
+  port.val[i,1] <- crossprod(as.matrix(ass.tbl[i,2:3]) * init.hold)
 #calculate the values and the weights of the portfolio
+init.hold
