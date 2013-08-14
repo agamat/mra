@@ -147,3 +147,14 @@ grid()
 x.rng <- c(2, seq(2,4, len = 100), 4)
 y.rng <- c(0, f_1(seq(2,4,len = 100)), 0)
 polygon(x.rng, y.rng, col = "grey", border = "grey")
+
+#Sec. I.1.4.2 - Portfolio holdings and portfolio weights
+#create asset prices table
+years <- 2003:2006
+ast1 <- c(100, 125, 80, 120)
+ast2 <- c(200, 500, 250, 400)
+ass.tbl <- data.frame(years = years, asset1 = ast1, asset2 = ast2)
+init.hold <- c(600, 200) #initial unit holdings of asset 1 and asset 2
+for (i in 1:4)
+  print ass.tbl[i,2:3] * init.hold
+#calculate the values and the weights of the portfolio
