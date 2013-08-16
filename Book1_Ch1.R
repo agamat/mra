@@ -52,6 +52,7 @@ plot(x, conv.exp(x), type = "p", col = "red",
 )
 abline(h = exp(1), col = "blue", lwd = 2)
 grid()
+
 #log(x) and x functions - approximations if x is small
 f.x <- function(x) x
 f.log <- function(x) log(1+x)
@@ -60,9 +61,8 @@ curve(f.x, 0, 1, col = "red", lwd = 2, lty = 1,
 curve(f.log, 0, 1, col = "blue", lwd = 2, lty = 1, add = TRUE)
 lgnd.txt = c(c("log(1+x)", "x"))
 lgnd.col = c("blue", "red")
-legend(0.1, 0.9, lgnd.txt, lgnd.col)
+legend(0.01, 0.99, lgnd.txt, lgnd.col)
 grid()
-abline(h = 0, v = 0, lty = 5, col = "grey")
 
 #Fig.I.1.5 - The exponential function
 curve(exp, -3, 3,
