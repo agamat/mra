@@ -87,3 +87,22 @@ det(B[-1,-1])
 det(B[-2,-2])
 det(B[-3,-3])
 #hence the matrix is positive definite - all the principal minors are positive
+
+#Sec. I.2.3.5 - Properties of Eigenvalues and Eigenvectors
+A <- matrix(c(1, 2, 2, 4), nrow = 2)
+eigen(A)
+
+#Sec. I.2.3.6 - Using R ...
+corr.mat <- c(1, .5, .2, .5, 1, .3, .2, .3, 1)
+A <- matrix(corr.mat, nrow = 3)
+eigen(A)
+
+#Sec. I.2.4.1 - Covariance and Correlation Matrices
+#V - variance/covariance matrix
+#D - volatilities diagonal matrix (measured by standard deviation)
+#C - correlation matrix
+#V = D * C * D
+D <- diag(c(0.2, 0.1, 0.15))
+C <- matrix(c(1, 0.8, 0.5, 0.8, 1, 0.3, 0.5, 0.3, 1), nrow = 3)
+V <- D %*% C %*% D
+V
