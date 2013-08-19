@@ -59,3 +59,31 @@ A %*% solve(A)
 #Sec. I.2.2.4 - Determinants
 A <- matrix(c(1, 0, 1, 2, 2, 1, 0, 2, 1, -1, 0, 1, 0, 2, 1, 1), nrow = 4)
 det(A) #this is the singular matrix therefore the inverse of matrix A does not exist
+
+#Sec. I.2.2.5 - Matrix Inversion
+A <- matrix(c(1, 2, 0, -2, 4, 2, 3, 0, -1), nrow = 3)
+det(A) #the determinant of the matrix in not equal to 0, therefore the inverse matrix exists
+solve(A) #find the inverse matrix 
+
+#Sec. I.2.2.6 - Solution of Simulaneous Linear Equations
+A <- matrix(c(1, 2, 0, -2, 4, 2, 3, 0, -1), nrow = 3)
+b <- matrix(c(1, 3, 0), nrow = 3)
+solve(A, b) #find the solution
+
+#Sec. I.2.2.7 - Quadratic Forms
+mat.vals <- c(1, 2, 0, -2, 4, 2, 3, 0, -1)
+A <- matrix(mat.vals, nrow = 3)
+x.a <- matrix(c(.5, .3, .2), nrow = 3)
+x.b <- matrix(c(1, 0, -1), nrow = 3)
+t(x.a) %*% A %*% x.a #calculate the quadratic form
+t(x.b) %*% A %*% x.b
+
+#Sec. I.2.2.8 - Definite Matrices
+A <- matrix(c(1, 1, -2, 1, 5, -4, 2, -4, 6), nrow = 3)
+B <- 0.5 * (A + t(A))
+det(B) #principal minor of order 3
+#calculate principal minors of order 2
+det(B[-1,-1])
+det(B[-2,-2])
+det(B[-3,-3])
+#hence the matrix is positive definite - all the principal minors are positive
