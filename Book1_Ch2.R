@@ -139,3 +139,29 @@ D <- diag(c(0.2, 0.1, 0.15))
 C <- matrix(c(1, 0.8, 0.5, 0.8, 1, 0.3, 0.5, 0.3, 1), nrow = 3)
 V <- D %*% C %*% D
 V
+
+#Sec. I.2.5.3 - Cholesky Decomposition
+#Example I.2.16
+A <- matrix(c(1, -1, -1, 2), nrow = 2)
+det(A)
+#The matrix has to be positive definite to perform the Cholesky decomposition
+R <- chol(A) #upper triangular matrix
+R
+t(R) %*% R #check if the matrix product of the Cholesky matrix equals to matrix A
+#Example I.2.16
+A <- matrix(c(1, -1, -2, -1, 5, 4, -2, 4, 6), nrow = 3)
+R <- chol(A)
+t(R) %*% R #check if the matrix product of the Cholesky matrix equals to matrix A
+
+#Sec. I.2.5.3 - LU Decomposition
+install.packages("Matrix")
+require(Matrix)
+A <- matrix(c(1, 2, 0, 1, 2, 2, 1, -1, 0, 2, 3, 8, 1, -3, 8, -2), nrow = 4)
+lu.dec <- lu(A) #perform LU factorization
+elu.dec <- expand(lu.dec) #assign the expand method
+elu.dec$L #lower matrix
+elu.dec$U #upper matrix
+elu.dec$P #permutation
+A2 <- with(elu.dec, P %*% L %*% U) #reconstruct the A matrix
+A
+A2
