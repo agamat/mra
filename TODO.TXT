@@ -1,3 +1,2 @@
 #Chapter 2 - finalise the sections of PCA
 #add hypothesis testing for the sample mean equal to 0
-#draw polygons

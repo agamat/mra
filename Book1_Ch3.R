@@ -127,11 +127,24 @@ plot(x.vals, y.vals, type = "l", col = "red",
 
 #Sec. I.3.2.8 - Quantiles, Quartiles and Percentiles
 par(mfrow = c(2,1))
-x.vals <- seq(-4, 4, len = 100)
-pdf.x <- dnorm(x.vals, mean = 0, sd = 1)
-cdf.x <- pnorm(x.vals, mean = 0, sd = 1)
-plot(x.vals, pdf.x, type = "l")
-alpha.x <- seq(-4, qnorm(0.05, mean = 0, sd = 1))
-alpha.y <- dnorm(alpha.x, mean = 0, sd = 1)
-plot(x.vals, cdf.x, type = "l")
-#TO DO: draw polygons
+curve(dnorm(x, mean = 0, sd = 1), xlim = c(-3, 3),
+     main = "Continous density N(0,1)", ylab = "PDF", xlab = "",
+     cex.main = .75, cex.lab = .75)
+quartile.x <- qnorm(0.05, , mean = 0, sd = 1)
+x.cord <- c(-3, seq(-3, quartile.x, len = 100), quartile.x)
+y.cord <- c(0, dnorm(seq(-3, quartile.x, len = 100), mean = 0, sd = 1), 0)
+polygon(x.cord, y.cord, col = "grey")
+abline(v = qnorm(0.05, mean = 0, sd = 1), lty = 5, col = "red")
+curve(pnorm(x, mean = 0, sd = 1), xlim = c(-3, 3),
+     main = "Continous distribution N(0,1)", ylab = "CDF", xlab = "",
+     cex.main = .75, cex.lab = .75)
+quartile.x <- qnorm(0.05, , mean = 0, sd = 1)
+x.cord <- c(-3, seq(-3, quartile.x, len = 100), quartile.x)
+y.cord <- c(0, pnorm(seq(-3, quartile.x, len = 100), mean = 0, sd = 1), 0)
+polygon(x.cord, y.cord, col = "grey")
+abline(v = qnorm(0.05, mean = 0, sd = 1), lty = 5, col = "red")
+
+trials <- 10
+prob.succ <- 0.1
+barplot(dbinom(0:trials, trials, prob.succ))
+dbinom(1:10, 10, 0.1)
