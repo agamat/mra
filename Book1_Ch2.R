@@ -1,3 +1,4 @@
+#Book I Chapter 2 - Essential Linear Algebra for Finance
 #Sec. I.2.2.1 - Basic terminology
 elem <- c(-1, 0.4, -0.5, 0, 3, 2)
 A <- matrix(elem, nrow = 2) #create matrix object

@@ -1,4 +1,4 @@
-#Functions and graphs from chapter 1
+#Book I Chapter 1 - Basic Calculus for Finance
 #Fig.I.1.1 - linear funcion
 f_x <- function(x){
   3 * x + 2
