@@ -88,6 +88,39 @@ det(B[-2,-2])
 det(B[-3,-3])
 #hence the matrix is positive definite - all the principal minors are positive
 
+#Sec. I.2.3.1 - Matrices as Linear Transformations
+#Example 1
+x <- c(1,2)
+x <- rbind(x,c(3,2))
+x
+plot(0:3, 0:3, type = "n", main = "A matrix is a linear transformation", 
+     xlab = "x", ylab = "y", cex.lab = 0.75, cex.main = 0.8)
+grid()
+points(x, pch = 19)
+arrows(0, 0, 1, 2, length = 0, lty = 2, lwd = 1)
+arrows(0, 0, 3, 2, length = 0, lty = 2, lwd = 1)
+abline(h = 0, v = 0, col = "grey", lty = 5)
+#Example 2
+x <- c(2,1)
+x <- rbind(x,c(4,8))
+plot(0:10, 0:10, type = "n", main = "A vector that is not an eigenvector", 
+     xlab = "x", ylab = "y", cex.lab = 0.75, cex.main = 0.8)
+grid()
+points(x, pch = 19)
+arrows(0, 0, 2, 1, length = 0, lty = 2, lwd = 1)
+arrows(0, 0, 4, 8, length = 0, lty = 2, lwd = 1)
+abline(h = 0, v = 0, col = "grey", lty = 5)
+#Example 3
+x <- c(1,2)
+x <- rbind(x,c(5,10))
+plot(0:10, 0:10, type = "n", main = "An eigenvector", 
+     xlab = "x", ylab = "y", cex.lab = 0.75, cex.main = 0.8)
+grid()
+points(x, pch = 19)
+arrows(0, 0, 1, 2, length = 0, lty = 2, lwd = 1)
+arrows(0, 0, 5, 10, length = 0, lty = 2, lwd = 1)
+abline(h = 0, v = 0, col = "grey", lty = 5)
+
 #Sec. I.2.3.5 - Properties of Eigenvalues and Eigenvectors
 A <- matrix(c(1, 2, 2, 4), nrow = 2)
 eigen(A)
