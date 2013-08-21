@@ -144,7 +144,66 @@ y.cord <- c(0, pnorm(seq(-3, quartile.x, len = 100), mean = 0, sd = 1), 0)
 polygon(x.cord, y.cord, col = "grey")
 abline(v = qnorm(0.05, mean = 0, sd = 1), lty = 5, col = "red")
 
+#Sec. I.3.3.1 - Binominal distribution
+par(mfrow = c(1, 1))
 trials <- 10
-prob.succ <- 0.1
-barplot(dbinom(0:trials, trials, prob.succ))
-dbinom(1:10, 10, 0.1)
+#calculate probabilities for different prob. of success
+p1 <- dbinom(0:10, trials, 0.1) 
+p2 <- dbinom(0:10, trials, 0.25)
+p3 <- dbinom(0:10, trials, 0.5)
+#create the matrix with density values
+bin.probs <- matrix(c(p1, p2, p3), ncol = 3)
+colnames(bin.probs) <- c("p=0.1", "p=0.25", "p=0.5")
+rownames(bin.probs) <- 0:10
+apply(bin.probs, 2, sum) #check if all probabilities sum to 1
+#plot the densities
+barplot(t(bin.probs), beside = TRUE, col = c("blue", "red", "green"), legend = TRUE,
+        main = "Some binominal density functions", ylab = "Prob.", xlab = "No of successes")
+
+#Example I.3.4 - Evolution of an asset price
+start.price <- 50
+days <- 4
+prob.up <- 0.7
+up.mov <- 1.25
+dw.mov <- 1/up.mov
+#calculate price/paths/prob if the stock moves up for 4 consecutive days
+price <- start.price * up.mov ^ 4 * dw.mov ^ (days - 4)
+paths <- choose(days, 4)
+prob <- dbinom(4, days, prob.up)
+result <- data.frame(Price = price, No.of.Paths = paths, Prob = prob)
+
+#calculate price/paths/prob if the stock moves up for 3,2, ... days
+for (i in 3:0){
+  price <- start.price * up.mov ^ i * dw.mov ^ (days - i)
+  paths <- choose(days, i)
+  prob <- dbinom(i, days, prob.up)
+  result <- rbind(result, c(price, paths, prob))
+}
+result #show the result
+
+#Sec.I.3.3.2 - Poisson and Exponential Distributions
+mu <- 2.5
+pois.prob <- matrix(dpois(0:10, lambda = mu), ncol = 1)
+colnames(pois.prob) <- "Poiss(mu=2.5)"
+rownames(pois.prob) <- 0:10
+barplot(t(pois.prob), main = "Density of Poisson distribution (mu = 2.5)",
+        xlab = "No of occurences", ylab = "Probability", col = "lightblue")
+t(pois.prob) #Densisties of Poisson distribution
+
+#Sec. I.3.3.3 - Uniform Distribution
+draws <- 1000
+x.cord <- runif(draws)
+y.cord <- runif(draws)
+plot(x.cord, y.cord, pch = 19,
+     xlab = "", ylab = "",
+     xlim = c(0, 1), ylim = c(0, 1), 
+     cex = 0.7, main = paste(draws,"uniformely distributed points (X,Y) ~ U[0,1]"))
+grid()
+
+#Sec. I.3.3.4 - Normal Distribution
+plot(function(x) dnorm(x), -7.5, 6.5, ylab = "", lwd = 2, col = "blue",
+     main = "Two normal densities")
+curve(dnorm(x, mean = 1, sd = 2), add = TRUE, lwd = 2, col = "red")
+grid()
+legend(-7.5, 0.4, legend = c("N(0,1)","N(1,4)"), lwd = 2, col = c("blue", "red"))
+abline(v = 0:1, lwd = 1, lty = 5, col = c("blue", "red"))
