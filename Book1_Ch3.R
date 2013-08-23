@@ -202,8 +202,41 @@ grid()
 
 #Sec. I.3.3.4 - Normal Distribution
 plot(function(x) dnorm(x), -7.5, 6.5, ylab = "", lwd = 2, col = "blue",
-     main = "Two normal densities")
-curve(dnorm(x, mean = 1, sd = 2), add = TRUE, lwd = 2, col = "red")
+     main = "Two normal densities", cex.lab = 0.75)
+curve(dnorm(x, mean = 1, sd = 2), add = TRUE, lwd = 2, col = "red", cex.lab = 0.75)
 grid()
-legend(-7.5, 0.4, legend = c("N(0,1)","N(1,4)"), lwd = 2, col = c("blue", "red"))
+legend(-7.5, 0.4, legend = c("N(0,1)","N(1,4)"), lwd = 2, col = c("blue", "red"), cex = 0.75)
 abline(v = 0:1, lwd = 1, lty = 5, col = c("blue", "red"))
+
+#Sec. I.3.3.4 - Lognormal Distribution
+plot(function(x) dlnorm(x), 0, 6, ylab = "", lwd = 2, col = "blue",
+     main = "Two normal densities", cex.lab = 0.75, ylim = c(0, 0.7))
+grid()
+
+#Sec. I.3.3.5 - Lognormal Distribution
+#Sec. I.3.3.6 - Normal Mixture Distributions
+#Sec. I.3.3.7 - Student t Distribution
+par(mfrow = c(1, 1), mar = c(5,4,4,2)+0.1)
+plot(function(x) dt(x, df = 3), -6, 6, col = "grey60", lwd = 2, ylim = c(0, 0.45),
+     xlab = "", ylab = "",
+     main = "Comparison of Student t densities and standard normal", cex.main = 0.8)
+curve(dt(x, df = 6), col = "grey", lwd = 2, add = TRUE)
+curve(dnorm(x, mean = 0, sd = 1), lwd = 2, add = TRUE)
+
+abline(h = seq(0, 0.5, 0.1), col = "light blue", lty = 3)
+legend("topleft", inset = 0.01, 
+       legend = c("t-Dist(df = 3)","t-Dist(df = 6)", "N(0;1)"), 
+       lwd = 2, lty = 1, col = c("grey60", "grey", "black"),
+       cex = 0.75)
+
+plot(function(x) dnorm(x, 0, sqrt(1.5)), -6, 6, 
+     col = "red", lwd = 2, ylim = c(0, 0.45), ann = FALSE)
+curve(dt(x, df = 6), lwd = 2, add = TRUE, col = "blue")
+abline(h = seq(0, 0.4, 0.1), col = "grey", lty = 3)
+legend("topleft", inset = 0.01, 
+       legend = c("Normal with var.=1.5", "t-Dist(df = 6)"), 
+       lwd = 2, lty = 1, col = c("red", "blue"),
+       cex = 0.75)
+title(main = "Comparison of Student t density and normal with same variance", cex.main = 0.8) 
+
+#Sec. I.3.3.8 - Sampling Distributions
