@@ -240,3 +240,95 @@ legend("topleft", inset = 0.01,
 title(main = "Comparison of Student t density and normal with same variance", cex.main = 0.8) 
 
 #Sec. I.3.3.8 - Sampling Distributions
+#Chi-square with k degrees of freedom
+par(mfrow = c(1,2))
+#densities
+plot(function (x) dchisq(x, df = 1), 0, 15, ann = FALSE, lwd = 2, col = "brown")
+curve(dchisq(x, df = 2), add = TRUE, lwd = 2, col = "red")
+curve(dchisq(x, df = 3), add = TRUE, lwd = 2, col = "blue")
+curve(dchisq(x, df = 4), add = TRUE, lwd = 2, col = "green")
+curve(dchisq(x, df = 6), add = TRUE, lwd = 2, col = "yellow")
+curve(dchisq(x, df = 9), add = TRUE, lwd = 2, col = "grey")
+grid()
+legend.txt <- c("df = 1","df = 2","df = 3", "df = 4", "df = 6", "df = 9")
+color.list <- c("brown", "red", "blue", "green", "yellow", "grey")
+legend("topright", inset = 0.1, title = "Chi-sq", legend = legend.txt, 
+       col = color.list, lty = 1, lwd = 2, cex = 0.7)
+title(main = "Different Chi-square density functions", cex.main = 0.7)
+#cumulative distribution functions
+plot(function (x) pchisq(x, df = 1), 0, 15, ann = FALSE, lwd = 2, col = "brown")
+curve(pchisq(x, df = 2), add = TRUE, lwd = 2, col = "red")
+curve(pchisq(x, df = 3), add = TRUE, lwd = 2, col = "blue")
+curve(pchisq(x, df = 4), add = TRUE, lwd = 2, col = "green")
+curve(pchisq(x, df = 6), add = TRUE, lwd = 2, col = "yellow")
+curve(pchisq(x, df = 9), add = TRUE, lwd = 2, col = "grey")
+grid()
+legend.txt <- c("df = 1","df = 2","df = 3", "df = 4", "df = 6", "df = 9")
+color.list <- c("brown", "red", "blue", "green", "yellow", "grey")
+legend("bottomright", inset = 0.1, title = "Chi-sq", legend = legend.txt, 
+       col = color.list, lty = 1, lwd = 2, cex = 0.7)
+title(main = "Different Chi-square cumulative distribution functions", cex.main = 0.7)
+par(mfrow = c(1, 1))
+
+opar <- par(no.readonly = TRUE)
+draws <- 1e5
+par(mfrow = c(3,1))
+y.lim <- c(0, 0.15)
+hist(rchisq(draws, df = 5), col = "light blue", breaks = 50, 
+     prob = TRUE, xlim = c(0, 60), ylim = y.lim,
+     xlab = "t-Distribution (df = 1)", main = "")
+hist(rchisq(draws, df = 10), col = "blue", breaks = 50, 
+     prob = TRUE, xlim = c(0, 60), ylim = y.lim,
+     xlab = "t-Distribution (df = 10)", main = "")
+hist(rchisq(draws, df = 25), col = "dark blue", breaks = 50, 
+     prob = TRUE, xlim = c(0, 60), ylim = y.lim,
+     xlab = "t-Distribution (df = 25)", main = "")
+title(main = "Histograms for t-Distribution with different degrees of freedom", outer = TRUE, line = -1.5)
+par(opar)
+#Standard t with k degrees of freedom
+#F-distribution
+
+###+++++++++++++++++++++++++++++++++++++++++++
+#++++ Review of probability distributions  +++
+###+++++++++++++++++++++++++++++++++++++++++++
+
+###+++ Continous probability distributions +++
+
+#Parametrise the plotting area
+#par(mfrow = c(1,2))
+?layout
+mat.lay <- matrix(c(2,2,0,4), 2, 2, byrow = TRUE)
+mat.lay
+layout(mat.lay)
+layout.show(n = 4)
+#Normal distribution
+mean.1 = 0; sd.1 = 1
+mean.2 = 1; sd.2 = 3
+mean.3 = -1; sd.3 = 0.5
+#Density functions
+plot(function(x) dnorm(x, mean.1, sd.1), col = "blue", lwd = 2, lty = 1,
+     xlim = c(-6, 6), ylim=c(0, 1), cex.axis = 0.7, ann = FALSE)
+curve(dnorm(x, mean = mean.2, sd = sd.2), col = "red", add = TRUE, lwd = 2, lty =1)
+curve(dnorm(x, mean = mean.3, sd = sd.3), col = "green", add = TRUE, lwd = 2, lty = 1)
+title(main = "Different density functions for normal distribution", cex.main = 0.7)
+abline(h = seq(0, 1, by = 0.2), col = "grey", lty = 3)
+legend("topright", inset = 0.01, legend = c("N(0,1)","N(1,3)","N(-1,0.5)"), cex = 0.7,
+       lty = 1, lwd = 2, col = c("blue","red","green"))
+#Cumulative distribution function
+plot(function(x) pnorm(x, mean.1, sd.1), col = "blue", lwd = 2, lty = 1,
+     xlim = c(-6, 6), ylim=c(0, 1), cex.axis = 0.7, ann = FALSE)
+curve(pnorm(x, mean = mean.2, sd = sd.2), col = "red", add = TRUE, lwd = 2, lty =1)
+curve(pnorm(x, mean = mean.3, sd = sd.3), col = "green", add = TRUE, lwd = 2, lty = 1)
+title(main = "Different density functions for normal distribution", cex.main = 0.7)
+abline(h = seq(0, 1, by = 0.2), col = "grey", lty = 3)
+legend("bottomright", inset = 0.01, legend = c("N(0,1)","N(1,3)","N(-1,0.5)"), cex = 0.7,
+       lty = 1, lwd = 2, col = c("blue","red","green"))
+#Randomly generated numbers
+draws <- 100
+plot(rnorm(draws, mean.1, sd.1), col = "blue", pch = 19, cex.axis = 0.7, ann = FALSE, cex = 0.7)
+points(rnorm(draws, mean = mean.2, sd = sd.2), col = "red", pch = 19, cex = 0.7)
+points(rnorm(draws, mean = mean.3, sd = sd.3), col = "green", pch = 19, cex = 0.7)
+title(main = "Random numbers", cex.main = 0.7)
+grid()
+legend("topright", inset = 0.01, legend = c("N(0,1)","N(1,3)","N(-1,0.5)"),
+       col = c("blue","red","green"), pch = 19, cex = 0.7)
